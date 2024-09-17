@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Página de Inicio</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <h1>Inicio de Ejercicio</h1>
+    <p th:text="${hola}"></p>
+    <p th:text="${hola2}"></p>
+    <br/>
+    <div th:if="${individuos != null and !individuos.empty}">
+        <h2>Listado de Individuos</h2>
+        <table border="2">
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Telefono</th>
+                <th>Correo</th>
+                <th>Edad</th>
+            </tr>
+            <tr th:each="individuo : ${individuos}">
+                <td th:text="${individuo.nombre}"></td>
+                <td th:text="${individuo.apellido}"></td>
+                <td th:text="${individuo.telefono}"></td>
+                <td th:text="${individuo.correo}"></td>
+                <td th:text="${individuo.edad}"></td>
+            </tr>
+        </table>
+    </div>
+    <div th:if="${individuos == null or individuos.empty}">
+        La lista no tiene información
+    </div>
+
+</body>
+</html>
